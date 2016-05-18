@@ -37,5 +37,20 @@ app.set('view engine', 'jade')
 // Set up route
 app.use('/', home)
 
+// Handle errors
+app.use((req, res, next) => {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
 // Export App
 module.exports = app
