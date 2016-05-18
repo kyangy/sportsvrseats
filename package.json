@@ -11,6 +11,7 @@
     "morgan": "^1.6.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-router": "^2.4.0",
     "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
