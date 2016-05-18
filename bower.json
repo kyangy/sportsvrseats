@@ -1,0 +1,20 @@
+{
+  "name": "sportsvrseats",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Kevin Yang"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kyangy/sportsvrseats",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2"
+  }
+}
