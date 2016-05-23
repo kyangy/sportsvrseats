@@ -31,6 +31,9 @@ module.exports = {
       { test: /\.useable\.css$/, 
         loader: "style/useable!css"
       },
+      { test: /\.scss$/,  
+        loaders: ["style", "css", "sass"]
+      },
       {
         test: /\.html$/,
         loader: 'html?attrs[]=video&attrs[]=source:src'

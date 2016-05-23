@@ -2,13 +2,13 @@
 
 import React, { Component, PropTypes } from 'react'
 
-require('./index.css')
+require('./index.scss')
 
 export default class extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid about-section">
         <div className="row">
           <div className="col-md-6 camera"></div>
           <div className="col-md-6">
