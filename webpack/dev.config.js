@@ -23,12 +23,30 @@ module.exports = {
         test: /\.jsx?/,
         loaders: ['babel'],
         include: path.join(__dirname, '../client')
+      },
+      { test: /\.css$/, 
+        exclude: /\.useable\.css$/, 
+        loader: "style!css"
+      },
+      { test: /\.useable\.css$/, 
+        loader: "style/useable!css"
+      },
+      {
+        test: /\.html$/,
+        loader: 'html?attrs[]=video&attrs[]=source:src'
+      },
+      {
+        test: /\.mp4$/,
+        loader: 'url?mimetype=video/mp4'
+      }, 
+      {
+        test: /\.(jpeg|png|gif|svg|jpg)$/i,
+        loaders:
+        [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
       }
-      // {
-      //   test: /\.css$/,
-      //   loaders: ['style!css'],
-      //   include: path.join(__dirname, '../client')
-      // }
     ]
   }
 };

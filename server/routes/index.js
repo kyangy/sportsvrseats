@@ -7,7 +7,7 @@ const router = Router()
 const component = createFactory(App)
 
 // For our SPA
-router.get('/', (req, res, next) => {
+router.get('*', (req, res, next) => {
   res.render('index', {
     title: 'SportsVRSeats',
     component: renderToString(component({}))
