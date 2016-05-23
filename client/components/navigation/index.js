@@ -3,6 +3,8 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
+require('./index.css')
+
 export default class NavBar extends Component {
 
   render() {
@@ -18,7 +20,7 @@ export default class NavBar extends Component {
               <Link className="nav-link" to="about">About</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="product">Product</Link>
+              <Link className="nav-link" to="sports">Sports</Link>
             </li>
           </ul>
         </div>
