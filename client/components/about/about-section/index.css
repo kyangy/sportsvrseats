@@ -1,0 +1,18 @@
+.col-md-6 {
+  height: 550px;
+}
+
+.camera {
+  background-image: url('../../../assets/images/camera.png');
+  background-size: cover;
+}
+
+h1 {
+  margin-top: 170px;
+  color: tomato;
+}
+
+p {
+  font-size: 25px;
+  font-family: 'Fjalla One';
+}

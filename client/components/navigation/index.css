@@ -1,14 +1,17 @@
 .navbar {
-  background: none !important;
+  background: black;
+  border-radius: initial;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .navbar-brand {
   font-family: 'Russo One', sans-serif;
   font-size: 2em;
-  color: black !important;
+  color: white !important;
 }
 
 .nav-link {
   padding-top: 17px !important;
-  color: black !important;
+  color: white !important;
 }
