@@ -11,10 +11,8 @@ export default class Home extends Component {
   render() {
     return (
       <main>
-        <div className="container-fluid">
-          <NavBar />
-          <Video />
-        </div>
+        <NavBar />
+        <Video />
       </main>
     )
   }

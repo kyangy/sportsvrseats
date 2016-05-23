@@ -3,15 +3,16 @@
 import React, { Component, PropTypes } from 'react'
 
 import NavBar from '../navigation'
+import AboutSection from './about-section'
 
 export default class About extends Component {
 
   render() {
     return (
-      <div>
+      <main>
         <NavBar />
-        <h1>About Page!</h1>
-      </div>
+        <AboutSection />
+      </main>
     )
   }
 }
