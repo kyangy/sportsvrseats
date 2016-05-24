@@ -1,0 +1,29 @@
+.video-banner {
+  position: relative;
+  z-index: 5;
+  height: 500px;
+  
+  .video-frame {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+    video {
+      width: 100%;
+    }
+  }
+
+  .overlay {
+    height: 500px;
+    background: rgba(0,0,0,0.5);
+    .text {
+      text-align: center;
+      color: white;
+      padding-top: 140px;
+    }
+  }
+}
+  
