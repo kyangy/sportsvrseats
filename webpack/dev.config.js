@@ -31,6 +31,9 @@ module.exports = {
       { test: /\.useable\.css$/, 
         loader: "style/useable!css"
       },
+      { test: /\.scss$/,  
+        loaders: ["style", "css", "sass"]
+      },
       {
         test: /\.html$/,
         loader: 'html?attrs[]=video&attrs[]=source:src'
@@ -40,7 +43,7 @@ module.exports = {
         loader: 'url?mimetype=video/mp4'
       }, 
       {
-        test: /\.(jpeg|png|gif|svg|jpg)$/i,
+        test: /\.(jpe?g|png|gif|svg)$/i,
         loaders:
         [
           'file?hash=sha512&digest=hex&name=[hash].[ext]',

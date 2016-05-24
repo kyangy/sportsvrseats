@@ -1,0 +1,27 @@
+.sport-box {
+  padding-bottom: 45px;
+
+  .col-md-3 {
+    padding: 0px;
+  }
+
+  .sport-nodes {
+    height: 520px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    // .overlay {
+    //   width: 100%;
+    //   height: 100%;
+    //   background: rgba(0,0,0,0.4);
+    // }
+
+    p {
+      padding-top: 40px;
+      font-size: 25px;
+      font-family: 'Fjalla One', 'sans-serif';
+      color: white;
+    }
+  }
+}
+

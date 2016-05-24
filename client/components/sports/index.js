@@ -5,38 +5,34 @@ import React, { Component, PropTypes } from 'react'
 import NavBar from '../navigation'
 import SportBox from './sportbox'
 
+require('./index.scss')
+
 let sports = [
   {
     title: '2016 NBA Finals',
+    img: require("../../assets/images/nba.png"),
   },
   {
     title: 'Superbowl LI',
+    img: require("../../assets/images/nfl.png"),
   },
   {
     title: 'World Series 2016',
-  },
-  {
-    title: '2016 Stanley Cup Finals',
+    img: require("../../assets/images/mlb.png"),
   },
   {
     title: 'Mayweather vs McGregor',
-  },
-  {
-    title: 'UFC 200',
-  },
-  {
-    title: '2018 FIFA World Cup Russia',
+    img: require("../../assets/images/boxing.png"),
   },
 ]
 
 export default class Sports extends Component {
   render() {
     return (
-      <div>
+      <main className="sports-page">
         <NavBar />
-        <h1>Find your event!</h1>
         <SportBox sports={ sports } />
-      </div>
+      </main>
     )
   }
 }

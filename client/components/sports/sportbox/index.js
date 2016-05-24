@@ -2,6 +2,8 @@
 
 import React, { Component, PropTypes } from 'react'
 
+require('./index.scss')
+
 export default class SportBox extends Component {
   static propTypes = {
     sports: PropTypes.array.isRequired
@@ -19,15 +21,19 @@ export default class SportBox extends Component {
     const { sports } = this.state
     let sportNodes = sports.map((sport, i) => {
       return (
-        <option key={ i + '-' + sport.title }>{ sport.title }</option>
+        <div style={{backgroundImage: `url('${sport.img}')`}} className="col-md-3 sport-nodes" key={ i + '-' + sport.title }>
+          <div className="overlay">
+            <p className="text-xs-center"></p>
+          </div>
+        </div>
       )
     })
 
     return (
-      <div>
-        <select>
+      <div className="container-fluid sport-box">
+        <div className="row">
           { sportNodes }
-        </select>
+        </div>
       </div>
     )
   }
