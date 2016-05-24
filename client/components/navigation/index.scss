@@ -2,7 +2,6 @@
   background: black;
   border-radius: initial;
   width: 100%;
-  margin-bottom: 35px;
   border-bottom: 1px solid white;
 }
 
@@ -10,9 +9,16 @@
   font-family: 'Russo One', sans-serif;
   font-size: 2em;
   color: white !important;
+  transition-duration: 1.0s;
 }
 
 .nav-link {
   padding-top: 17px !important;
   color: white !important;
+  transition-duration: 1.0s;
+}
+
+.nav-brand:hover,
+.nav-link:hover {
+  color: tomato !important;
 }

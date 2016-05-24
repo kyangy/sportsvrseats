@@ -35,10 +35,6 @@ module.exports = {
         loaders: ["style", "css", "sass"]
       },
       {
-        test: /\.html$/,
-        loader: 'html?attrs[]=video&attrs[]=source:src'
-      },
-      {
         test: /\.mp4$/,
         loader: 'url?mimetype=video/mp4'
       }, 
