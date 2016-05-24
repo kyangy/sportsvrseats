@@ -1,10 +1,11 @@
 .about-section {
-  .col-md-6 {
-    height: 550px;
+  .col-md-5 {
+    padding: 0px;
   }
 
   .camera {
-    background-image: url('../../../assets/images/camera.png');
+    width: 100%;
+    height: 100%;
     background-size: cover;
   }
 
@@ -15,7 +16,7 @@
 
   p {
     font-size: 25px;
-    font-family: 'Fjalla One';
+    font-family: 'Fjalla One', 'sans-serif';
   }
 
 }

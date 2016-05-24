@@ -10,9 +10,11 @@ export default class extends Component {
     return (
       <div className="container-fluid about-section">
         <div className="row">
-          <div className="col-md-6 camera"></div>
-          <div className="col-md-6">
-            <h1>Virtual Reality video cameras</h1>
+          <div className="col-md-7">
+            <img src={require('../../../assets/images/camera.png')} className="camera" />
+          </div>
+          <div className="col-md-5">
+            <h1>Virtual Reality cameras</h1>
             <p>Experience courtside, first row, club dugout levels, and more!</p>
           </div>
         </div>
