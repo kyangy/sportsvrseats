@@ -42,7 +42,7 @@ handler = StripeCheckout.configure({
       }
     })
   }
-})
+});
 
 export default class extends Component {
   constructor(props) {
