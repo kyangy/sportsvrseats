@@ -1,3 +1,5 @@
+'use strict'
+
 import React, { createFactory } from 'react'
 import { renderToString } from 'react-dom/server'
 import { Router } from 'express'

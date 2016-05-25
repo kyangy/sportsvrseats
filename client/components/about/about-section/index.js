@@ -18,6 +18,7 @@ export default class extends Component {
             <p>Experience courtside, first row, club dugout levels, and more!</p>
           </div>
         </div>
+        <div id='testimonio_thread'></div>
       </div>
     )
   }

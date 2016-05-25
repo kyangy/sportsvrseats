@@ -1,9 +1,14 @@
 'use strict'
 
+/* polyfills */
+import '../polyfills'
+
 import express from 'express'
 import config from '../config'
 import path from 'path'
 import home from './routes'
+import bodyParser from 'body-parser'
+import api from './api'
 
 const app = express()
 
@@ -36,6 +41,13 @@ app.set('view engine', 'jade')
 
 // Set up route
 app.use('/', home)
+
+// Set up api
+app.use('/api', api)
+
+/* POST parsing */
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 // Handle errors
 app.use((req, res, next) => {

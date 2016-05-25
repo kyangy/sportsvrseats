@@ -2,6 +2,8 @@
 
 import React, { Component, PropTypes } from 'react'
 
+import Ticket from '../../ticket'
+
 require('./index.scss')
 
 export default class SportBox extends Component {
@@ -23,7 +25,7 @@ export default class SportBox extends Component {
       return (
         <div style={{backgroundImage: `url('${sport.img}')`}} className="col-md-3 sport-nodes" key={ i + '-' + sport.title }>
           <div className="overlay">
-            <p className="text-xs-center"></p>
+            <Ticket sport={ sport } />
           </div>
         </div>
       )
