@@ -25,10 +25,34 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, '../client')
-    }]
+    loaders: [
+      {
+        test: /\.jsx?/,
+        loaders: ['babel'],
+        include: path.join(__dirname, '../client')
+      },
+      { test: /\.css$/, 
+        exclude: /\.useable\.css$/, 
+        loader: "style!css"
+      },
+      { test: /\.useable\.css$/, 
+        loader: "style/useable!css"
+      },
+      { test: /\.scss$/,  
+        loaders: ["style", "css", "sass"]
+      },
+      {
+        test: /\.mp4$/,
+        loader: 'url?mimetype=video/mp4'
+      }, 
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders:
+        [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      }
+    ]
   }
 };

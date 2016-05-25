@@ -1,6 +1,18 @@
+#! /bin/env node
+
 'use strict'
 
 require('babel-core/register')
+
+/*
+ * Define isomorphic constants
+ */
+
+global.__CLIENT__ = false
+global.__SERVER__ = true
+global.__DISABLE_SSR__ = false;  // DISABLES SERVER SIDE RENDERING FOR ERROR DEBUGGING
+global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
+global.__PRODUCTION__ = process.env.NODE_ENV === 'production';
 
 const http = require('http')
 const app = require('../server')
