@@ -6,7 +6,7 @@ const prodConfig = require('./prod.config')
 exports.devConfig = devConfig
 exports.prodConfig = prodConfig
 
-if (_DEVELOPMENT_) {
+if (__DEVELOPMENT__) {
   exports.compiler = require('webpack')(devConfig)
 }
 
