@@ -1,6 +1,7 @@
 'use strict'
 
-require('dotenv').load()
+const dotenv = require('dotenv').config({silent: true})
+dotenv.load()
 
 exports.PORT = 3000
 exports.ENV = process.env.NODE_ENV || 'development'
