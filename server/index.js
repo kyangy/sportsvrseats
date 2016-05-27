@@ -12,12 +12,6 @@ import api from './api'
 
 const app = express()
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, function() {
-    console.log('Our app is running on http://localhost:' + port);
-});
-
 // Webpack configurations
 const webpackServer = require('../webpack')
 const compiler = webpackServer.compiler
