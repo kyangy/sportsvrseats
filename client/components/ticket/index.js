@@ -3,6 +3,8 @@
 import React, { Component, PropTypes } from 'react'
 import fetch from 'isomorphic-fetch'
 
+require('./index.scss')
+
 // Handler
 let handler, paymentObj
 
@@ -65,7 +67,7 @@ export default class extends Component {
 
   render() {
     return (
-      <button className='btn btn-success' onClick={ this.purchase }>Purchase</button>
+      <button onClick={ this.purchase }>Purchase</button>
     )
   }
 }
