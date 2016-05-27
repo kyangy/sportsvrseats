@@ -23,9 +23,18 @@ export default class SportBox extends Component {
     const { sports } = this.state
     let sportNodes = sports.map((sport, i) => {
       return (
-        <div style={{backgroundImage: `url('${sport.img}')`}} className="col-md-3 sport-nodes" key={ i + '-' + sport.title }>
+        <div className="col-md-3 sport-nodes" key={ i + '-' + sport.title }>
+          <img className="sport-img" src={`${sport.img}`} />
           <div className="overlay">
-            <Ticket sport={ sport } />
+            <div className="sport-logo">
+              <img src={`${sport.logo}`} />
+            </div>
+            <div className="sport-info">
+              <p>{ sport.title }</p>
+              <p>{ sport.time }</p>
+              <p>{ sport.location }</p>
+              <Ticket sport={ sport } />
+            </div>
           </div>
         </div>
       )
