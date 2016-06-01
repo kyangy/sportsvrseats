@@ -5,32 +5,16 @@ import '../polyfills'
 
 import express from 'express'
 import config from '../config'
+import routes from './routes'
 import path from 'path'
-import home from './routes'
 import bodyParser from 'body-parser'
 import api from './api'
 
 const app = express()
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, function() {
-    console.log('Our app is running on http://localhost:' + port);
-});
-
-// Webpack configurations
-const webpackServer = require('../webpack')
-const compiler = webpackServer.compiler
-const devConfig = webpackServer.devConfig
-
-// Only use outside of production
-if (config.ENV !== 'production') {
-  app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: devConfig.output.publicPath
-  }))
-
-  app.use(require('webpack-hot-middleware')(compiler))
+/* webpack development */
+if (config.env !== 'production') {
+  require('../webpack/dev.config').webpackDevConfig(app)
 }
 
 // Static files
@@ -46,7 +30,7 @@ app.set('views', path.join(__dirname, '../client/views'))
 app.set('view engine', 'jade')
 
 // Set up route
-app.use('/', home)
+app.use('/', routes)
 
 // Set up api
 app.use('/api', api)

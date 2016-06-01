@@ -3,7 +3,7 @@
 import React, { createFactory } from 'react'
 import { renderToString } from 'react-dom/server'
 import { Router } from 'express'
-import App from '../../client/container'
+import App from '../../shared/container'
 
 const router = Router()
 const component = createFactory(App)

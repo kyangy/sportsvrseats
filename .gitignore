@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 npm-debug.log
-dist
 vendor/
 static/dist
 .env
+/webpack-stats.json
+/webpack-assets.json
