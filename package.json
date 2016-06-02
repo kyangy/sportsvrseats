@@ -64,7 +64,6 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "prestart": "./node_modules/bower/bin/bower install && npm run build",
     "dev": "node ./bin/www --harmony",
     "prod": "npm run build && NODE_ENV=production node ./bin/www",
     "clean": "./node_modules/rimraf/bin.js static/dist",
