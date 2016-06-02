@@ -64,11 +64,13 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
-    "lint": "eslint client",
-    "clean": "rimraf static/dist",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js",
-    "build": "npm run clean && npm run build:webpack"
+    "prestart": "./node_modules/bower/bin/bower install && npm run build",
+    "dev": "node ./bin/www --harmony",
+    "prod": "npm run build && NODE_ENV=production node ./bin/www",
+    "clean": "./node_modules/rimraf/bin.js static/dist",
+    "lint": "eslint client server bin",
+    "build": "npm run clean && npm run build:webpack",
+    "build:webpack": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress --color -p --config webpack/prod.config.js --optimize-minimize"
   },
   "keywords": [],
   "author": "Stanley C Yang <stanley@stanleycyang.com> (http://www.stanleycyang.com)",

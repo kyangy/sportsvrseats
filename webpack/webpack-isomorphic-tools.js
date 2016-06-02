@@ -8,7 +8,8 @@ module.exports = {
         'jpeg',
         'jpg',
         'png',
-        'gif'
+        'gif',
+        'mp4'
       ],
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },

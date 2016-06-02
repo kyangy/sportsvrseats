@@ -1,51 +1,73 @@
-var path = require('path');
-var webpack = require('webpack');
+'use strict'
 
-module.exports = {
-  devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'eventsource-polyfill', // necessary for hot reloading with IE
-    'webpack-hot-middleware/client',
-    './client/index'
-  ],
-  output: {
-    path: path.join(__dirname, '../static/dist'),
-    filename: 'bundle.min.js',
-    publicPath: '/dist/'
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?/,
-        loaders: ['babel'],
-        include: path.join(__dirname, '../client')
-      },
-      { test: /\.css$/, 
-        exclude: /\.useable\.css$/, 
-        loader: "style!css"
-      },
-      { test: /\.useable\.css$/, 
-        loader: "style/useable!css"
-      },
-      { test: /\.scss$/,  
-        loaders: ["style", "css", "sass"]
-      },
-      {
-        test: /\.mp4$/,
-        loader: 'url?mimetype=video/mp4'
-      }, 
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders:
-        [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
-      }
+const webpack = require('webpack')
+const assign = require('object-assign')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const WebpackIsomorphicTools = require('webpack-isomorphic-tools')
+const path = require('path')
+const prodConfig = require('./prod.config.js')
+const config = require('../config')
+
+// https://github.com/halt-hammerzeit/webpack-isomorphic-tools
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+
+// Use Object.assign
+Object.assign = assign
+
+const host = config.HOST || 'localhost'
+const port = (config.port + 1) || 3001
+
+exports.webpackDevConfig = function(app) {
+  const config = Object.assign(prodConfig, {
+    devtool: 'inline-source-map',
+    context: path.resolve(__dirname, '..'),
+    entry: [
+      `webpack-hot-middleware/client`,
+      path.resolve(__dirname, '../client/index')
+    ],
+    output: {
+      path: path.resolve(__dirname, '../static/dist'),
+      filename: 'bundle.min.js',
+      chunkFilename: 'bundle.min.js',
+      publicPath: `http://${host}:${port}/dist/`
+    },
+    progress: true,
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.IgnorePlugin(/webpack-stats\.json$/),
+      new webpack.NoErrorsPlugin(),
+      new ExtractTextPlugin('bundle.min.css', {
+        allChunks: true
+      }),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        __CLIENT__: true,
+        __SERVER__: false,
+        __DEVELOPMENT__: true,
+        __DEVTOOLS__: true
+      }),
+      webpackIsomorphicToolsPlugin.development()
     ]
+  })
+
+  const serverOptions = {
+    contentBase: `http://${host}:${port}`,
+    quiet: true,
+    noInfo: true,
+    hot: true,
+    inline: true,
+    lazy: false,
+    lazy: false,
+    publicPath: config.output.publicPath,
+    headers: {'Access-Control-Allow-Origin': '*'},
+    stats: {colors: true}
   }
-};
+  const compiler = webpack(config)
+
+  app.use(webpackDevMiddleware(compiler, serverOptions))
+  app.use(webpackHotMiddleware(compiler))
+}

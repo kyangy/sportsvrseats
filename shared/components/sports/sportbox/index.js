@@ -4,7 +4,9 @@ import React, { Component, PropTypes } from 'react'
 
 import Ticket from '../../ticket'
 
-require('./index.scss')
+if (__CLIENT__) {
+  require('./index.scss')
+}
 
 export default class SportBox extends Component {
   static propTypes = {
@@ -22,9 +24,10 @@ export default class SportBox extends Component {
   render() {
     const { sports } = this.state
     let sportNodes = sports.map((sport, i) => {
+      const sportImg = require(`${sport.img}`)
       return (
         <div className="col-md-3 sport-nodes" key={ i + '-' + sport.title }>
-          <img className="sport-img" src={`${sport.img}`} />
+          <img className="sport-img" src={sportImg} />
           <div className="overlay">
             <div className="sport-logo">
               <img src={`${sport.logo}`} />

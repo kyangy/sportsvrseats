@@ -4,14 +4,107 @@
 
 require('babel-core/register')
 
-const http = require('http')
+/*
+ * Define isomorphic constants
+ */
+
+global.__CLIENT__ = false
+global.__SERVER__ = true
+global.__DISABLE_SSR__ = false;  // DISABLES SERVER SIDE RENDERING FOR ERROR DEBUGGING
+global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
+global.__PRODUCTION__ = process.env.NODE_ENV === 'production';
+
 const app = require('../server')
+const debug = require('debug')('reactjsworkshop:server')
 const config = require('../config')
 const pkg = require('../package.json')
+const path = require('path')
+const fs = require('fs')
 
-const port = config.PORT
-app.set('port', port)
+if (__DEVELOPMENT__) {
+  if (!require('piping')({
+    hook: true,
+    ignore: /(\/\.|~$|\.json|\.scss$)/i
+  })) {
+    return
+  }
+}
 
-const server = http.createServer(app)
+/* Define server */
+let server
 
-server.listen(port)
+/* Port */
+const port = normalizePort(config.port)
+
+const WebpackIsomorphicTools = require('webpack-isomorphic-tools')
+global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack/webpack-isomorphic-tools'))
+  .development(__DEVELOPMENT__)
+  .server(path.resolve(__dirname, '..'), () => {
+
+    server = require('http').createServer(app)
+
+    // Tell the server to listen
+    server.listen(port)
+    server.on('error', onError)
+    server.on('listening', onListening)
+
+  })
+
+/*
+ * Server functions
+ */
+
+function normalizePort(val) {
+  let port = parseInt(val, 10)
+
+  if (isNaN(port)) {
+    return val
+  }
+
+  if (port >= 0) {
+    // port number
+    return port
+  }
+
+  return false
+}
+
+/*
+ * Event listener for HTTP server "error" event
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error
+  }
+
+  let bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port
+
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges')
+      process.exit(1)
+      break
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use')
+      process.exit(1)
+      break
+    default:
+      throw error
+  }
+}
+
+/*
+ * Event listener for HTTP server "listening" event
+ */
+
+function onListening() {
+  const addr = server.address()
+  let bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port
+  debug(`${pkg.name} is listening on ${bind}`)
+  console.log(`${pkg.name} is listening on ${bind}`)
+}

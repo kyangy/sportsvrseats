@@ -5,7 +5,9 @@ import React, { Component, PropTypes } from 'react'
 import NavBar from '../navigation'
 import Video from './video'
 
-require('./index.scss');
+if (__CLIENT__) {
+  require('./index.scss')
+}
 
 export default class Home extends Component {
   render() {
