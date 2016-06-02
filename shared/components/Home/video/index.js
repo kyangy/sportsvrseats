@@ -3,7 +3,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
-require('./index.scss')
+if (__CLIENT__) {
+  require('./index.scss')
+}
 
 export default class extends Component {
   render() {
@@ -11,7 +13,7 @@ export default class extends Component {
       <div className="video-banner">
         <div className="video-frame">
           <video autoPlay loop muted>
-            <source src={require('../../../assets/videos/courtside.mp4')} type='video/mp4' />
+            <source src={require('../../../../static/vids/courtside.mp4')} type='video/mp4' />
           </video>
         </div>
         <div className="overlay">

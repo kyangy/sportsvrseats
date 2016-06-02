@@ -2,12 +2,14 @@
 
 import React, { Component, PropTypes } from 'react'
 
-require('./index.scss')
+if (__CLIENT__) {
+  require('./index.scss')
+}
 
 export default class extends Component {
 
   render() {
-    const camera = require('../../../assets/images/camera.png')
+    const camera = require('../../../../static/imgs/camera.png')
 
     return (
       <div className="container-fluid about-section">

@@ -3,7 +3,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
-require('./index.scss')
+if (__CLIENT__) {
+  require('./index.scss')
+}
 
 export default class NavBar extends Component {
 

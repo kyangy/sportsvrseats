@@ -1,12 +1,15 @@
 extends layout
 
 block content
+
+  //- ReactJS Component
   div#root!=component
+
+  //- Import JS libraries
   script(src="/vendor/jquery/dist/jquery.min.js" defer)
   script(src="/vendor/tether/dist/js/tether.min.js" defer)
   script(src="/vendor/bootstrap/dist/js/bootstrap.min.js" defer)
   script(src="https://js.stripe.com/v2/")
   script(src="https://checkout.stripe.com/checkout.js")
-  script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" defer)
   script(src='https://www.testimon.io/kyangy/boards/main/embed.js' async)
   script(src="/dist/bundle.min.js" defer)
