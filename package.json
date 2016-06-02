@@ -1,5 +1,5 @@
 {
-  "name": "react-bible-boilerplate",
+  "name": "sportsvrseats",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -72,6 +72,6 @@
     "build:webpack": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress --color -p --config webpack/prod.config.js --optimize-minimize"
   },
   "keywords": [],
-  "author": "Stanley C Yang <stanley@stanleycyang.com> (http://www.stanleycyang.com)",
+  "author": "Kevin Yang <yangdongkevin@gmail.com> (http://www.kyangy.com)",
   "license": "MIT"
 }
