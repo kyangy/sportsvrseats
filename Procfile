@@ -1,2 +1,1 @@
-node ./bin/www
-web: bundle exec thin start -p $PORT
+web: node ./bin/www
