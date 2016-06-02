@@ -17,7 +17,6 @@ app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
 
-
 /* webpack development */
 if (config.env !== 'production') {
   require('../webpack/dev.config').webpackDevConfig(app)
