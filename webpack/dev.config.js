@@ -18,7 +18,7 @@ var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./w
 Object.assign = assign
 
 const host = config.HOST || 'localhost'
-const port = (config.port + 1) || 3001
+const port = (config.PORT + 1) || 3001
 
 exports.webpackDevConfig = function(app) {
   const config = Object.assign(prodConfig, {

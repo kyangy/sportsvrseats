@@ -34,7 +34,7 @@ if (__DEVELOPMENT__) {
 let server
 
 /* Port */
-const port = normalizePort(config.port)
+const port = normalizePort(config.PORT)
 
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools')
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack/webpack-isomorphic-tools'))
