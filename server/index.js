@@ -11,11 +11,11 @@ import bodyParser from 'body-parser'
 import api from './api'
 
 const app = express()
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
-app.listen(port, function() {
-    console.log('Our app is running on http://localhost:' + port);
-});
+// app.listen(port, function() {
+//     console.log('Our app is running on http://localhost:' + port);
+// });
 
 /* webpack development */
 if (config.env !== 'production') {

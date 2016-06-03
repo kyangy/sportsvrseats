@@ -13,7 +13,7 @@ export default class extends Component {
       <div className="video-banner">
         <div className="video-frame">
           <video autoPlay loop muted>
-            <source src={require('../../../../static/vids/courtside.mp4')} type='video/mp4' />
+            <source src='/vids/courtside.mp4' type='video/mp4' />
           </video>
         </div>
         <div className="overlay">

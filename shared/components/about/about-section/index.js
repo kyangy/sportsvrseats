@@ -9,13 +9,12 @@ if (__CLIENT__) {
 export default class extends Component {
 
   render() {
-    const camera = require('../../../../static/imgs/camera.png')
 
     return (
       <div className="container-fluid about-section">
         <div className="row">
           <div className="col-md-7">
-            <img src={camera} className="camera" />
+            <img src='/imgs/camera.png' className="camera" />
           </div>
           <div className="col-md-5">
             <h1>Virtual Reality cameras</h1>
