@@ -7,7 +7,6 @@ import { renderToString } from 'react-dom/server'
 import { RouterContext, match } from 'react-router'
 import createLocation from 'history/lib/createLocation'
 import path from 'path'
-import config from '../../config'
 
 // Import files
 import routes from '../../shared/routes'

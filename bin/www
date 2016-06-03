@@ -19,7 +19,6 @@ const debug = require('debug')('reactjsworkshop:server')
 const config = require('../config')
 const pkg = require('../package.json')
 const path = require('path')
-const fs = require('fs')
 
 if (__DEVELOPMENT__) {
   if (!require('piping')({
