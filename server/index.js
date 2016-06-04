@@ -12,6 +12,9 @@ import api from './api'
 
 const app = express()
 
+const port = config.PORT
+app.set('port', port)
+
 /* webpack development */
 if (config.ENV !== 'production') {
   require('../webpack/dev.config').webpackDevConfig(app)
@@ -21,8 +24,6 @@ if (config.ENV !== 'production') {
 app.use(express.static(path.join(__dirname, '../static'), {
   maxAge: 86400000
 }))
-
-app.set('port', port)
 
 // Logging
 app.use(require('morgan')('dev'))
