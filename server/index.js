@@ -22,6 +22,8 @@ app.use(express.static(path.join(__dirname, '../static'), {
   maxAge: 86400000
 }))
 
+app.set('port', port)
+
 // Logging
 app.use(require('morgan')('dev'))
 
