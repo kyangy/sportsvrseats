@@ -13,7 +13,9 @@ import api from './api'
 const app = express()
 
 const port = config.PORT
-app.set('port', port)
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
 
 /* webpack development */
 if (config.ENV !== 'production') {
