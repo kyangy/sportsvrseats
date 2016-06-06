@@ -13,7 +13,7 @@ import api from './api'
 const app = express()
 
 /* webpack development */
-if (config.ENV !== 'production') {
+if (config.env !== 'production') {
   require('../webpack/dev.config').webpackDevConfig(app)
 }
 
