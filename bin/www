@@ -19,7 +19,6 @@ const debug = require('debug')('reactjsworkshop:server')
 const config = require('../config')
 const pkg = require('../package.json')
 const path = require('path')
-const http = require('http')
 
 if (__DEVELOPMENT__) {
   if (!require('piping')({
@@ -41,10 +40,10 @@ global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack/w
   .development(__DEVELOPMENT__)
   .server(path.resolve(__dirname, '..'), () => {
 
-    server = http.createServer(app)
+    server = require('http').createServer(app)
 
     // Tell the server to listen
-    server.listen(process.env.PORT || 3000)
+    server.listen(port)
     server.on('error', onError)
     server.on('listening', onListening)
 
