@@ -21,7 +21,7 @@ router.get('*', (req, res, next) => {
 
   /* Isomorphic React Router render */
   const location = createLocation(req.url)
-  match({ routes, location }, (err, redirectLocation, renderProps) => {
+  match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
 
     /* Catch 500s */
     if (err) {
