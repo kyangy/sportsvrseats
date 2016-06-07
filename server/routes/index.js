@@ -7,9 +7,12 @@ import { renderToString } from 'react-dom/server'
 import { RouterContext, match } from 'react-router'
 import createLocation from 'history/lib/createLocation'
 import path from 'path'
+import { Provider } from 'react-redux'
+import store from '../../shared/redux/store'
 
 // Import files
 import routes from '../../shared/routes'
+import { fetchComponentData } from '../utils'
 const router = Router()
 
 /* SPA */
@@ -34,15 +37,34 @@ router.get('*', (req, res, next) => {
      * All the fetching & rendering happens here
      */
 
-    // React Component to render
-    const componentHTML = renderToString(
-      <RouterContext assets={webpackIsomorphicTools.assets()} {...renderProps } />
+    // Fetch the data
+    fetchComponentData(
+      store.dispatch,
+      renderProps.components,
+      renderProps.params,
+      renderProps.location.query
     )
+    .then(() => {
+      // Fetch completed
 
-    // Pass the data and render the Jade template
-    res.render('index', {
-      component: componentHTML,
+      // Grab the initial state
+      const finalState = store.getState()
+
+      // React Component to render
+      const componentHTML = renderToString(
+        <Provider store={ store }>
+          <RouterContext assets={webpackIsomorphicTools.assets()} {...renderProps } />
+        </Provider>
+      )
+
+      // Pass the data and render the Jade template
+      res.render('index', {
+        component: componentHTML,
+        finalState,
+      })
+
     })
+    .catch(err => res.end(err.message))
   })
 })
 
