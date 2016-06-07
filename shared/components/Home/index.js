@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react'
 
 import NavBar from '../navigation'
 import Video from './video'
+import Footer from '../footer'
 
 if (__CLIENT__) {
   require('./index.scss')
@@ -14,6 +15,7 @@ export default class Home extends Component {
     return (
       <main>
         <Video />
+        <Footer />
       </main>
     )
   }

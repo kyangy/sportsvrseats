@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react'
 
 import NavBar from '../navigation'
 import SportBox from './sportbox'
+import Footer from '../footer'
 
 if (__CLIENT__) {
   require('./index.scss')
@@ -46,6 +47,7 @@ export default class Sports extends Component {
       <main className="sports-page">
         <NavBar />
         <SportBox sports={ sports } />
+        <Footer />
       </main>
     )
   }
