@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react'
 
 import NavBar from '../navigation'
 import AboutSection from './about-section'
+import Footer from '../footer'
 
 export default class About extends Component {
 
@@ -12,6 +13,7 @@ export default class About extends Component {
       <main>
         <NavBar />
         <AboutSection />
+        <Footer />
       </main>
     )
   }
