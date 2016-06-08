@@ -1,0 +1,6 @@
+export const ADD_USER = 'ADD_USER';
+export const CHANGE_SELECTED_USER = 'CHANGE_SELECTED_USER';
+export const ADD_USER_REQUEST = 'ADD_USER_REQUEST';
+export const ADD_USERS = 'ADD_USERS';
+export const ADD_SELECTED_USER = 'ADD_SELECTED_USER';
+export const DELETE_USER = 'DELETE_USER';
