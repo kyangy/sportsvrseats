@@ -15,7 +15,7 @@ global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 global.__PRODUCTION__ = process.env.NODE_ENV === 'production';
 
 const app = require('../server')
-const debug = require('debug')('reactjsworkshop:server')
+const debug = require('debug')('sportsvrseats:server')
 const config = require('../config')
 const pkg = require('../package.json')
 const path = require('path')
