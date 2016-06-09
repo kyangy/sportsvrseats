@@ -1,8 +1,9 @@
 import * as ActionTypes from '../constants'
-import config from '../../config'
+// import config from '../../../config'
 import fetch from 'isomorphic-fetch'
 
-const baseURL = typeof window === 'undefined' ? process.env.BASE_URL || (`http://localhost:${config.port}`) : '';
+// const baseURL = typeof window === 'undefined' ? process.env.BASE_URL || (`http://localhost:${config.port}`) : '';
+const baseURL = 'http://localhost:3000';
 
 export function addUser(user) {
   return {
@@ -13,13 +14,6 @@ export function addUser(user) {
     _id: user._id,
   };
 }
-
-// export function changeSelectedPost(slug) {
-//   return {
-//     type: ActionTypes.CHANGE_SELECTED_POST,
-//     slug,
-//   };
-// }
 
 export function addUserRequest(user) {
   return (dispatch) => {

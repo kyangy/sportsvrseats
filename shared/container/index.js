@@ -1,11 +1,16 @@
 'use strict'
 
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-export default class App extends Component {
+class App extends Component {
   static propTypes = {
-    children: PropTypes.object
+    children: PropTypes.object.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const { children } = this.props
@@ -16,3 +21,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default connect()(App);
