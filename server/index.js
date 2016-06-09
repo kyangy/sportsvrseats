@@ -9,6 +9,7 @@ import routes from './routes'
 import path from 'path'
 import bodyParser from 'body-parser'
 import api from './api'
+import mongoose from 'mongoose';
 
 const app = express()
 
@@ -16,6 +17,14 @@ const app = express()
 if (config.env !== 'production') {
   require('../webpack/dev.config').webpackDevConfig(app)
 }
+
+// MongoDB Connection
+mongoose.connect(config.MONGO_URL, (error) => {
+  if (error) {
+    console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
+    throw error;
+  }
+});
 
 // Static files
 app.use(express.static(path.join(__dirname, '../static'), {
@@ -29,7 +38,7 @@ app.use(require('morgan')('dev'))
 app.set('views', path.join(__dirname, '../client/views'))
 app.set('view engine', 'jade')
 
-// Set up route
+// Set up server route
 app.use('/', routes)
 
 // Set up api
