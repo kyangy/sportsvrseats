@@ -7,9 +7,7 @@ if (__CLIENT__) {
 }
 
 export default class extends Component {
-
   render() {
-
     return (
       <div className="container-fluid about-section">
         <div className="row">

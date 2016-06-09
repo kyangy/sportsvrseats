@@ -4,7 +4,7 @@ import StripeController from './controllers/Stripe'
 import * as UserController from './controllers/User'
 
 // Create the router object
-const router = Router()
+const router = new Router()
 
 // Stripe Routes
 router.post('/payment', StripeController.chargeCard)

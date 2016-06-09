@@ -15,7 +15,6 @@ export default class SportBox extends Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
       sports: this.props.sports
     }
